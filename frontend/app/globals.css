@@ -1,0 +1,382 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #6750a4;
+  --color-primary-hover: rgb(103 80 164 / 0.9);
+  --color-primary-active: rgb(103 80 164 / 0.8);
+  --color-on-primary: #ffffff;
+  --color-secondary-container: #e8def8;
+  --color-on-secondary-container: #1d192b;
+  --color-tertiary: #7d5260;
+  --color-background: #fffbfe;
+  --color-surface: #ffffff;
+  --color-surface-container: #f3edf7;
+  --color-surface-container-low: #e7e0ec;
+  --color-surface-container-high: #ece6f0;
+  --color-foreground: #1c1b1f;
+  --color-on-surface-variant: #49454f;
+  --color-border: #cac4d0;
+  --color-outline: #79747e;
+  --color-destructive: #b3261e;
+  --color-destructive-container: #f9dedc;
+  --color-on-destructive-container: #410e0b;
+  --color-success: #146c2e;
+  --color-success-muted: #e3f5e8;
+  --color-warning: #8a5300;
+  --color-warning-muted: #fdf0dc;
+  --color-ring: #6750a4;
+  --radius: 24px;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: "Roboto", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  min-height: 100dvh;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-ring);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* --- Layout --- */
+
+.page {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 1.25rem 1rem 3rem;
+}
+@media (min-width: 640px) {
+  .page {
+    padding: 2rem 1.5rem 4rem;
+  }
+}
+
+.page-title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--color-foreground);
+  letter-spacing: -0.01em;
+}
+
+/* --- Card: MD3 tonal surface, generous radius --- */
+
+.card {
+  background: var(--color-surface-container);
+  border: none;
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  box-shadow: 0 1px 2px rgb(28 27 31 / 0.06);
+  transition: box-shadow 300ms cubic-bezier(0.2, 0, 0, 1);
+}
+@media (min-width: 640px) {
+  .card {
+    padding: 1.5rem;
+  }
+}
+
+/* --- Buttons: pill-shaped, MD3 state-layer model --- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  border-radius: 9999px;
+  padding: 0.625rem 1.25rem;
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  min-height: 44px;
+  transition: background-color 300ms cubic-bezier(0.2, 0, 0, 1), box-shadow 300ms cubic-bezier(0.2, 0, 0, 1),
+    color 150ms ease, border-color 300ms cubic-bezier(0.2, 0, 0, 1), transform 150ms cubic-bezier(0.2, 0, 0, 1);
+  cursor: pointer;
+  touch-action: manipulation;
+  white-space: nowrap;
+}
+.btn:active:not(:disabled) {
+  transform: scale(0.96);
+}
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+}
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--color-primary-hover);
+  box-shadow: 0 4px 12px rgb(103 80 164 / 0.28);
+}
+.btn-primary:active:not(:disabled) {
+  background-color: var(--color-primary-active);
+}
+
+.btn-secondary {
+  background-color: var(--color-secondary-container);
+  color: var(--color-on-secondary-container);
+}
+.btn-secondary:hover:not(:disabled) {
+  background-color: rgb(232 222 248 / 0.7);
+  box-shadow: 0 2px 8px rgb(29 25 43 / 0.12);
+}
+
+.btn-danger {
+  background-color: var(--color-destructive-container);
+  color: var(--color-on-destructive-container);
+}
+.btn-danger:hover:not(:disabled) {
+  background-color: #f6cdc9;
+}
+
+.btn-sm {
+  padding: 0.4rem 1rem;
+  font-size: 0.8125rem;
+  min-height: 36px;
+}
+
+/* --- Forms: MD3-inspired tonal fields --- */
+
+.input,
+select.input,
+textarea.input {
+  width: 100%;
+  background: var(--color-surface-container-low);
+  border: 1px solid transparent;
+  border-radius: 16px;
+  padding: 0.6rem 0.9rem;
+  font-size: 1rem;
+  min-height: 44px;
+  color: var(--color-foreground);
+  transition: border-color 200ms ease, box-shadow 200ms ease, background-color 200ms ease;
+}
+textarea.input {
+  min-height: 120px;
+  line-height: 1.5;
+  border-radius: 16px;
+}
+.input::placeholder {
+  color: var(--color-outline);
+}
+.input:focus {
+  outline: none;
+  background: var(--color-surface);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgb(103 80 164 / 0.16);
+}
+
+select.input {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  padding-right: 2.6rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M5.5 8L10 12.5L14.5 8' stroke='%2349454f' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.85rem center;
+  background-size: 20px;
+}
+select.input:hover {
+  background-color: var(--color-surface-container-high);
+}
+select.input:focus {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M5.5 8L10 12.5L14.5 8' stroke='%236750a4' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+select.input option {
+  color: var(--color-foreground);
+  background: var(--color-surface);
+}
+
+.label {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-on-surface-variant);
+  margin-bottom: 0.3rem;
+  display: block;
+}
+
+/* --- Badges: MD3 tonal containers --- */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  border-radius: 9999px;
+  padding: 0.2rem 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.badge-draft { background: var(--color-surface-container-high); color: var(--color-on-surface-variant); }
+.badge-open { background: var(--color-secondary-container); color: var(--color-on-secondary-container); }
+.badge-completed { background: var(--color-success-muted); color: var(--color-success); }
+.badge-submitted { background: var(--color-success-muted); color: var(--color-success); }
+.badge-pending { background: var(--color-warning-muted); color: var(--color-warning); }
+.badge-mock { background: var(--color-warning-muted); color: var(--color-warning); }
+
+/* --- Alerts: soft tonal --- */
+
+.alert {
+  font-size: 0.875rem;
+  border-radius: 16px;
+  padding: 0.7rem 1rem;
+  border: none;
+}
+.alert-error {
+  color: var(--color-on-destructive-container);
+  background: var(--color-destructive-container);
+}
+.alert-success {
+  color: var(--color-success);
+  background: var(--color-success-muted);
+}
+.alert-info {
+  color: var(--color-on-secondary-container);
+  background: var(--color-secondary-container);
+}
+
+/* --- Responsive data table / card-list pattern --- */
+
+.data-table-wrap {
+  border: none;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--color-surface-container);
+  box-shadow: 0 1px 2px rgb(28 27 31 / 0.06);
+}
+.data-table {
+  width: 100%;
+  font-size: 0.875rem;
+  border-collapse: collapse;
+}
+.data-table thead {
+  background: var(--color-surface-container-high);
+  text-align: left;
+  color: var(--color-on-surface-variant);
+}
+.data-table th {
+  font-weight: 500;
+  padding: 0.7rem 1.1rem;
+}
+.data-table td {
+  padding: 0.8rem 1.1rem;
+  border-top: 1px solid var(--color-surface-container-low);
+}
+.data-table tbody tr {
+  transition: background-color 200ms ease;
+}
+.data-table tbody tr:hover {
+  background-color: var(--color-surface-container-low);
+}
+
+.row-card {
+  background: var(--color-surface-container);
+  border: none;
+  border-radius: var(--radius);
+  padding: 1rem;
+  box-shadow: 0 1px 2px rgb(28 27 31 / 0.06);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Auth screens: soft floating gradient backdrop --- */
+
+.auth-bg {
+  background: linear-gradient(180deg, var(--color-background) 0%, var(--color-surface-container) 100%);
+}
+
+.auth-grid {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, var(--color-outline) 1px, transparent 1px);
+  background-size: 28px 28px;
+  opacity: 0.12;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 40%, transparent 100%);
+  pointer-events: none;
+}
+
+.auth-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(60px);
+  opacity: 0.55;
+  pointer-events: none;
+  will-change: transform;
+}
+.auth-blob-1 {
+  top: -12%;
+  left: -8%;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle at 30% 30%, var(--color-primary), transparent 70%);
+  animation: blobFloat1 22s ease-in-out infinite;
+}
+.auth-blob-2 {
+  bottom: -14%;
+  right: -10%;
+  width: 460px;
+  height: 460px;
+  background: radial-gradient(circle at 60% 60%, var(--color-tertiary), transparent 70%);
+  animation: blobFloat2 26s ease-in-out infinite;
+}
+.auth-blob-3 {
+  top: 35%;
+  right: 8%;
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(circle, var(--color-secondary-container), transparent 70%);
+  opacity: 0.7;
+  animation: blobFloat3 18s ease-in-out infinite;
+}
+
+@keyframes blobFloat1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(40px, 30px) scale(1.08); }
+}
+@keyframes blobFloat2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-30px, -40px) scale(1.1); }
+}
+@keyframes blobFloat3 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-20px, 25px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .auth-blob { animation: none; }
+}
+
+.auth-card {
+  background: color-mix(in srgb, var(--color-surface) 88%, transparent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid color-mix(in srgb, var(--color-primary) 12%, transparent);
+  box-shadow: 0 8px 40px rgb(103 80 164 / 0.12), 0 1px 3px rgb(28 27 31 / 0.08);
+}

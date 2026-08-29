@@ -1,0 +1,30 @@
+# Environment
+.env
+backend/.env
+frontend/.env.local
+landing/.env.local
+
+# Python
+backend/.venv/
+backend/__pycache__/
+backend/**/__pycache__/
+backend/.pytest_cache/
+*.pyc
+
+# Database
+backend/data/*.db
+backend/data/*.db-journal
+data/*.db
+data/*.db-journal
+backups/
+
+# Node / Next.js
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+landing/node_modules/
+landing/.next/
+landing/out/
+
+# OS
+.DS_Store

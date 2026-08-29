@@ -1,0 +1,130 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: #fffbfe;
+  color: #1c1b1f;
+  font-family: "Roboto", ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #fffbfe, 0 0 0 4px #6750a4;
+  border-radius: 9999px;
+}
+
+/* --- Buttons: pill-shaped, state-layer model --- */
+
+.md-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.01em;
+  height: 3rem;
+  padding: 0 1.75rem;
+  transition: background-color 300ms cubic-bezier(0.2, 0, 0, 1), box-shadow 300ms cubic-bezier(0.2, 0, 0, 1),
+    transform 150ms cubic-bezier(0.2, 0, 0, 1), border-color 300ms cubic-bezier(0.2, 0, 0, 1);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.md-btn:active {
+  transform: scale(0.95);
+}
+
+.md-btn-filled {
+  background-color: #6750a4;
+  color: #ffffff;
+}
+.md-btn-filled:hover {
+  background-color: rgb(103 80 164 / 0.9);
+  box-shadow: 0 4px 14px rgb(103 80 164 / 0.28);
+}
+.md-btn-filled:active {
+  background-color: rgb(103 80 164 / 0.8);
+}
+
+.md-btn-tonal {
+  background-color: #e8def8;
+  color: #1d192b;
+}
+.md-btn-tonal:hover {
+  background-color: rgb(232 222 248 / 0.7);
+  box-shadow: 0 2px 10px rgb(29 25 43 / 0.1);
+}
+
+.md-btn-outlined {
+  background-color: transparent;
+  color: #6750a4;
+  border: 1px solid #79747e;
+}
+.md-btn-outlined:hover {
+  background-color: rgb(103 80 164 / 0.08);
+}
+
+.md-btn-text {
+  background-color: transparent;
+  color: #6750a4;
+  padding: 0 1rem;
+}
+.md-btn-text:hover {
+  background-color: rgb(103 80 164 / 0.1);
+}
+
+/* --- Filled text field (Material 3 input style), reserved for future forms --- */
+
+.md-field {
+  width: 100%;
+  height: 3.5rem;
+  background-color: #e7e0ec;
+  border: none;
+  border-bottom: 2px solid #79747e;
+  border-radius: 12px 12px 0 0;
+  padding: 0 1rem;
+  font-size: 1rem;
+  color: #1c1b1f;
+  transition: border-color 200ms ease, background-color 200ms ease;
+}
+.md-field:focus {
+  outline: none;
+  border-bottom-color: #6750a4;
+  background-color: #ece6f0;
+}
+
+/* --- Chip --- */
+
+.md-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-radius: 9999px;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  background-color: #e8def8;
+  color: #1d192b;
+}
